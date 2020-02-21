@@ -222,36 +222,7 @@ class Provinces {
 		dead = 0;
 	}
 	
-	public void add_Ip(String str){//感染患者增加
-		ip += Integer.parseInt(str.substring(0, str.length()-1));
-		//System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	}
-	public void add_Sp(String str){//疑似患者增加
-	    sp += Integer.parseInt(str.substring(0, str.length()-1));
-	   //System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	}
-	public void reduce_Ip(String str){//感染患者减少
-	    ip -= Integer.parseInt(str.substring(0, str.length()-1));
-	    //System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	}
-	public void reduce_Sp(String str){//疑似患者减少
-	    sp -= Integer.parseInt(str.substring(0, str.length()-1));
-	    //System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	}
-	public void Exclude(String str){//疑似排除，疑似病例减少
-	    sp -= Integer.parseInt(str.substring(0, str.length()-1));
-	    //System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	}
-	public void dead(String str){//死亡患者增加，确证患者减少
-		dead += Integer.parseInt(str.substring(0, str.length()-1));
-		ip -= Integer.parseInt(str.substring(0, str.length()-1));
-		//System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	} 
-	public void cure(String str){//患者治愈，治愈患者增加，确诊患者减少
-		cure += Integer.parseInt(str.substring(0, str.length()-1));
-		ip -= Integer.parseInt(str.substring(0, str.length()-1));
-		//System.out.println(ip+" "+sp+" "+cure+" "+dead);
-	}
+	
 
 	public void Statistics(Provinces p){//统计全国数据
 	    ip += p.ip;
