@@ -53,18 +53,19 @@ class InfectStatistic {
         for (int i = 0; i < allProvinceList.length; i ++ )
         	map.put(allProvinceList[i], null);
     }
-	public static void main(String[] args) throws IOException {
-		
+    
+	public static void main(String[] args) throws IOException {//主函数
     	InfectStatistic infectStatistic = new InfectStatistic();
-    	if (!verifyArgs(args) || !infectStatistic.readFileManager()) {
+    	if (!verifyArgs(args) || !infectStatistic.readFileManager()) {//args和cmd测试用
     		return ;
     	}
     	infectStatistic.outputResult();
     	System.out.println("执行成功！");
     }
+	
 	public static boolean verifyArgs(String[] args) {//处理命令行参数
 		if(args[0].equals("list")){
-    		for (int i = 1;i < args.length; i++) {
+    		for (int i = 1;args[i] != null &&  i < args.length; i++) {
     			i++;
     			switch (args[i-1]) {
 					case "-date":
@@ -83,7 +84,7 @@ class InfectStatistic {
     							type[j] = args[i];
     						}
     						else {
-    							System.out.println("-type错误!--");
+    							System.out.println("type参数值错误");
     							return false;
     						}
     					}
@@ -101,7 +102,7 @@ class InfectStatistic {
         						}
     						}
     						if(!b) {
-    							System.out.println("-province错误!--");
+    							System.out.println("province参数值错误");
     							return false;
     						}
     						i++;
@@ -116,6 +117,7 @@ class InfectStatistic {
         }
     	return false;
 	}
+	
 	public boolean readFileManager() throws IOException {//读取处理文件
 		boolean b = false;
         String fileName;
@@ -187,6 +189,7 @@ class InfectStatistic {
         }
         return b;
 	}
+	
 	public void outputResult() throws IOException {//输出结果
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outPath), "UTF-8"));//默认输出所有省情况(无-province参数)
         if (allProvince) {
