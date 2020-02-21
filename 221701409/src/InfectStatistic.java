@@ -190,5 +190,22 @@ class InfectStatistic {
         return b;
 	}
 	
+	public void outputResult() throws IOException {//输出结果
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outPath), "UTF-8"));//默认输出所有省情况(无-province参数)
+        if (allProvince) {
+            for (int i = 0;i < allProvinceList.length;i++)
+                if (map.get(allProvinceList[i]) != null)
+                    map.get(allProvinceList[i]).output(allType,type ,bw);
+        }
+        else {
+            for (int i = 0; i < allProvinceList.length; i ++ )
+                if (province.contains(allProvinceList[i]))
+                    map.get(allProvinceList[i]).output(allType,type ,bw);
+        }
+        bw.write("// 该文档并非真实数据，仅供测试使用");
+        bw.close();
+	}
+}
+
 
 }
